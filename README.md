@@ -4,8 +4,8 @@ A Google Apps Script that automatically adds the next airing of **Hospoda** on T
 
 ## Features
 
-- Fetches today’s schedule from `https://tv.seznam.cz/program/tv-nova`
-- Builds URLs for tomorrow + the following 6 days (e.g. `/2025/7/1`)
+- Reads the TV Nova schedule from the public Seznam TV API (`https://tv.seznam.cz/api/schedules`, Nova = channel `3`)
+- Covers today + the following 6 days, one API request per day
 - Finds the first **Hospoda** episode each day
 - Creates one **public** calendar event per day
 - Event title is the episode name (e.g. “Hospoda (2)”)
@@ -32,7 +32,7 @@ No additional configuration is needed. The script uses your **primary calendar**
 2. Authorize the script when prompted.  
 3. After authorization, a trigger will fire **daily at 06:00 AM Europe/Prague time**.  
 4. Each run will:
-   - Fetch schedules from **today** through the **next 6 days**
+   - Query the Seznam TV API for **today** through the **next 6 days**
    - Locate the first **Hospoda** entry per day
    - Add it to your calendar if not already present
 
